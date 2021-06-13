@@ -1,0 +1,33 @@
+@mixin flexCenter($display, $content, $items, $direction) {
+  display: $display;
+  justify-content: $content;
+  align-items: $items;
+  flex-direction: $direction;
+}
+
+@mixin percentage($width, $height) {
+  width: 100% - $width;
+  height: 100% - $height;
+}
+
+@mixin boxShadow($shadow) {
+  box-shadow: $shadow;
+}
+
+@mixin borderRadius($radius) {
+  border-radius: $radius;
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  -o-border-radius: $radius;
+}
+
+@mixin background($background, $color) {
+  background: $background;
+  color: $color;
+  transition: background 0.5s ease;
+  -webkit-transition: background 0.5s ease;
+  -moz-transition: background 0.5s ease;
+  -ms-transition: background 0.5s ease;
+  -o-transition: background 0.5s ease;
+}
