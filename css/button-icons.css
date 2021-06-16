@@ -95,6 +95,14 @@
   content: "\10f067";
 }
 
+/* BACKSPACE */
+.fa-backspace:before {
+  content: "\f55a";
+}
+.fad.fa-backspace:after {
+  content: "\10f55a";
+}
+
 @font-face {
   font-family: "Font Awesome 5 Pro";
   font-style: normal;
