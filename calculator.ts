@@ -27,7 +27,6 @@ var getLength: number = 0;
 var setLength: number = 0;
 var length: number = 0;
 
-
 const mathOperations = [
   'fa-divide',
   'fa-times',
@@ -46,11 +45,6 @@ const secondScreenOperations = [
   'secondRootSign',
   'secondAbsSign'
 ];
-
-// window.addEventListener("load", () => {
-//   powerOffOn?.classList.remove("r_backOn");
-// })
-
 
 switchBtn.forEach((items) => {
   items.addEventListener('click', () => {
@@ -136,7 +130,7 @@ operation.forEach((items: any) => {
 
       else {
         if (data_id == 19) {
-          if (secondDisplay.textContent?.match('') == false) {
+          if (secondDisplay.textContent.length > 0) {
             let Fnumber = parseFloat(secondaryDisplay.textContent);
             let Snumber = parseFloat(firstDisplay.textContent);
             let percentage = (Snumber * Fnumber) / 100;

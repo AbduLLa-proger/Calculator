@@ -28,9 +28,6 @@ var secondScreenOperations = [
     'secondRootSign',
     'secondAbsSign'
 ];
-// window.addEventListener("load", () => {
-//   powerOffOn?.classList.remove("r_backOn");
-// })
 switchBtn.forEach(function (items) {
     items.addEventListener('click', function () {
         var _a;
@@ -47,7 +44,7 @@ switchBtn.forEach(function (items) {
 });
 operation.forEach(function (items) {
     items.addEventListener('click', function (e) {
-        var _a, _b, _c, _d, _e, _f, _g;
+        var _a, _b, _c, _d, _e, _f;
         e.preventDefault();
         var data_id = items;
         data_id = parseInt(data_id.dataset.id);
@@ -122,7 +119,7 @@ operation.forEach(function (items) {
             }
             else {
                 if (data_id == 19) {
-                    if (((_e = secondDisplay.textContent) === null || _e === void 0 ? void 0 : _e.match('')) == false) {
+                    if (secondDisplay.textContent.length > 0) {
                         var Fnumber = parseFloat(secondaryDisplay.textContent);
                         var Snumber = parseFloat(firstDisplay.textContent);
                         var percentage = (Snumber * Fnumber) / 100;
@@ -147,9 +144,9 @@ operation.forEach(function (items) {
                     rootLineWidth -= 0.4;
                     rootSignShift();
                 }
-                else if (data_id == 21 && ((_f = secondDisplay.textContent) === null || _f === void 0 ? void 0 : _f.match('')) == false) {
+                else if (data_id == 21 && ((_e = secondDisplay.textContent) === null || _e === void 0 ? void 0 : _e.match('')) == false) {
                     displayResult();
-                    if ((_g = tooltipContent === null || tooltipContent === void 0 ? void 0 : tooltipContent.classList) === null || _g === void 0 ? void 0 : _g.contains(tooltip_content))
+                    if ((_f = tooltipContent === null || tooltipContent === void 0 ? void 0 : tooltipContent.classList) === null || _f === void 0 ? void 0 : _f.contains(tooltip_content))
                         removeClass(tooltipContent, tooltip_content);
                 }
             }
