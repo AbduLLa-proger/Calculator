@@ -10,6 +10,16 @@
   height: 100% - $height;
 }
 
+@mixin width_and_height($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin Mwidth_and_Mheight($width, $height) {
+  max-width: $width;
+  max-height: $height;
+}
+
 @mixin boxShadow($shadow) {
   box-shadow: $shadow;
 }
@@ -38,4 +48,10 @@
   -moz-transition: background 0.3s ease;
   -ms-transition: background 0.3s ease;
   -o-transition: background 0.3s ease;
+}
+
+@mixin positionTopLeft($position, $top, $left) {
+  position: $position;
+  top: $top;
+  left: $left;
 }

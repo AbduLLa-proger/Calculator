@@ -14,7 +14,10 @@
 html,
 body {
   width: 100%;
-  height: 85%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 body {
@@ -46,10 +49,38 @@ h6 {
   margin: 0;
 }
 
+.tooltip {
+  @include positionTopLeft(absolute, 12%, 77%);
+  text-align: center;
+  &-content {
+    color: white;
+    background-color: black;
+    padding: 1rem;
+    @include borderRadius(5px);
+    position: absolute;
+    z-index: 1;
+    text-align: center;
+    width: 21rem;
+    font-family: $fontName2;
+    &::before {
+      content: "You can not write more than 20 number";
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      top: 35%;
+      right: 100%;
+      border: 0.5rem solid transparent;
+      border-right-color: $textColor;
+      font-size: 10rem;
+    }
+  }
+}
+
 .calculator {
   @include flexCenter(flex, center, center, unset);
-  @include percentage(0%, 30%);
-  margin-top: 11.3%;
+  @include width_and_height(60rem, 40rem);
+  position: relative;
   &-inner {
     @include flexCenter(flex, center, center, column);
     @include percentage(0%, 0%);
@@ -62,37 +93,53 @@ h6 {
     @include percentage(0%, 75%);
     padding-top: 5%;
     &-screen {
+      width: auto;
+      height: auto;
       @include percentage(10%, 0);
       @include borderRadius(5px);
       background: $calculatorScreen;
       position: relative;
-      &-first {
-        position: absolute;
+      &-main {
+        @include positionTopLeft(absolute, 45%, 7%);
+        &-inner {
+          @include flexCenter(flex, center, center, unset);
+          @include percentage(0%, 0%);
+          position: relative;
+        }
+      }
+      &-secondary {
+        @include percentage(25%, 55%);
+        @include positionTopLeft(absolute, 0%, 2%);
+        &-inner {
+          @include flexCenter(flex, center, center, unset);
+          @include percentage(0%, 0%);
+          position: relative;
+        }
+      }
+      &-second {
+        @include positionTopLeft(absolute, 30%, 1.8rem);
         font-family: $fontName;
         font-weight: map-get($font-weights, medium);
         font-size: map-get($font-size, small);
         color: $textColor;
-        left: 2%;
-        top: 2%;
       }
-      &-second {
-        @include flexCenter(flex, flex-start, center, unset);
+      &-first {
         font-family: $fontName;
         font-weight: map-get($font-weights, medium);
         font-size: map-get($font-size, medium);
         color: $textColor;
-        padding-left: 1.7rem;
-        width: 100%;
-        height: 100%;
+        @include width_and_height(100%, 100%);
       }
       &-sign {
         position: absolute;
-        font-family: $fontName;
-        font-weight: map-get($font-weights, bold);
-        font-size: map-get($font-size, big);
-        color: $textColor;
+        top: 0;
         right: 3%;
-        top: 0%;
+        font-size: map-get($font-size, big);
+        &-second {
+          position: absolute;
+          left: 4%;
+          font-size: 1.6rem;
+        }
       }
     }
   }
@@ -114,8 +161,7 @@ h6 {
         color: $buttonColor;
         cursor: pointer;
         text-align: center;
-        width: 100%;
-        height: 100%;
+        @include width_and_height(100%, 100%);
         position: absolute;
         padding-top: 1rem;
         padding-bottom: 3rem;
@@ -126,8 +172,7 @@ h6 {
 
       & div {
         position: relative;
-        width: 100%;
-        height: 100%;
+        @include width_and_height(100%, 100%);
         & .ballance {
           padding-top: 0.6rem;
           padding-bottom: 3.4rem;
@@ -165,16 +210,15 @@ h6 {
           background: transparent;
           border: none;
           cursor: unset;
-          color: $powerBackground;
+          color: $powerOffBackground;
         }
         & .r_backOn {
-          color: rgb(0, 255, 0);
+          color: $powerOnBackground;
         }
       }
       & .superscriptBorder {
         position: relative;
-        width: 100%;
-        height: 100%;
+        @include width_and_height(100%, 100%);
         & .border {
           position: absolute;
           background-color: $operationBtnBackground;
@@ -194,12 +238,9 @@ h6 {
             background-image: url("images/superscript.png");
             background-size: cover;
             background-repeat: no-repeat;
-            position: absolute;
             background-color: transparent;
-            top: 16%;
-            left: 25%;
-            width: 2.7rem;
-            height: 2.7rem;
+            @include positionTopLeft(absolute, 16%, 25%);
+            @include width_and_height(2.7rem, 2.7rem);
             @include transition;
           }
         }
@@ -209,10 +250,8 @@ h6 {
 }
 
 .container {
-  width: 100%;
-  height: 100%;
-  min-height: 38rem;
-  max-width: 450px;
+  @include Mwidth_and_Mheight(30rem, 38rem);
+  @include percentage(0%, 0%);
 }
 
 .plus-minus {
@@ -229,43 +268,67 @@ switch,
   padding-bottom: 3.4rem;
 }
 
-.rootSign {
-  position: absolute;
-  top: 34%;
-  left: 1%;
-  font-size: 2rem;
+.firstRootLine {
+  @include width_and_height(1rem, 0.39rem);
+  @include positionTopLeft(absolute, 45%, 8.8%);
+  background: $textColor;
+}
+
+.secondRootLine {
+  @include width_and_height(0.5rem, 0.4rem);
+  @include positionTopLeft(absolute, 26%, 2.3rem);
+  background: $textColor;
+}
+
+.firstRootSign {
+  @include positionTopLeft(absolute, 45%, 1%);
+  font-size: map-get($font-size, medium);
   color: $textColor;
   &::before {
     content: "\f697";
   }
-  &::after {
-    content: "";
-    position: absolute;
-    width: 0.5rem;
-    height: 0.39rem;
-    top: 0%;
-    left: 99%;
-    background: $textColor;
+}
+
+.secondRootSign {
+  @include positionTopLeft(absolute, 26%, 0.1rem);
+  font-size: map-get($font-size, medium);
+  color: $textColor;
+  &::before {
+    content: "\f697";
   }
 }
 
-.raiseToPower {
-  position: absolute;
-  top: 20%;
-  left: 10%;
-  font-family: $fontName2;
-  font-weight: map-get($font-weights, bold);
-  font-size: map-get($font-size, small);
+.firstTwoInPower {
   &::before {
     content: "2";
+    @include positionTopLeft(absolute, -0.9rem, 100%);
+    font-family: $fontName2;
+    font-weight: map-get($font-weights, bold);
+    font-size: map-get($font-size, small);
   }
 }
 
-.absSign {
-  //display: none;
-  position: absolute;
-  top: 25%;
-  left: 2%;
+.secondTwoInPower {
+  &::before {
+    content: "2";
+    @include positionTopLeft(absolute, -0.9rem, 100%);
+    font-family: $fontName2;
+    font-weight: map-get($font-weights, bold);
+    font-size: map-get($font-size, smaller);
+  }
+}
+
+.firstAbsSign {
+  @include positionTopLeft(absolute, 33%, 2%);
+  font-size: map-get($font-size, bigger);
+  font-weight: map-get($font-weights, medium);
+  &::after {
+    content: "-";
+  }
+}
+
+.secondAbsSign {
+  @include positionTopLeft(absolute, 0%, 3%);
   font-size: map-get($font-size, big);
   font-weight: map-get($font-weights, medium);
   &::after {

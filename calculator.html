@@ -1,67 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="calculator.css" />
-    <link rel="stylesheet" type="text/css" href="css/button-icons.css" />
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="calculator.css" />
+  <link rel="stylesheet" type="text/css" href="css/button-icons.css" />
+  <title>Document</title>
 </head>
+
 <body>
   <div class="calculator">
+
+    <div class="tooltip">
+      <div id='tooltipContent'></div>
+    </div>
+
     <div class="container">
-        <div class="calculator-inner">
-          <div class="calculator-upper">
-            <div class="calculator-upper-screen">
-              <p class="calculator-upper-screen-first"></p>
-              <p class="calculator-upper-screen-second" id="display-number"></p>
-              <i class="calculator-upper-screen-sign fas " id="operation-sign"></i>
-              <span class="calculator-screen-sign fas"></span>
-              <!-- <span class="rootSign fas "></span>
-              <span class="absSign"></span>
-              <span class="raiseToPower"></span>
-              <span class="rootLine"></span> -->
+      <div class="calculator-inner">
+        <div class="calculator-upper">
+          <div class="calculator-upper-screen">
+            <div class="calculator-upper-screen-main">
+              <div class="calculator-upper-screen-main-inner" id="mainDisplay">
+                <p class="calculator-upper-screen-first"></p>
+                <span class="calculator-upper-screen-sign-first "></span>
+              </div>
             </div>
-          </div>
-          <div class="calculator-down">
-            <div class="calculator-down-controller">
-             <div class="border"><i class="fa fa-power-off r_back"></i></div>
-             <div class="border"><span class="switch ballance">off</span></div>
-             <div class="border"><span class="switch ballance">on</span></div>
-             <div class="border"><span data-id="0" class="operation clear ballance or_back">clr</span></div>
-             <div class="border"><i data-id="1" class="operation fas fa-backspace ballance or_back"></i></div>
 
-             <div class="border"><i data-id="16" class="operation fas fa-square-root g_back"></i></div>
-             <div class="border"><span data-id="2" class="operation number ballance">7</span></div>
-             <div class="border"> <span data-id="3" class="operation number ballance">8</span></div>
-             <div class="border"><span data-id="4" class="operation number ballance">9</span></div>
-             <div class="border"><i data-id="12" class="operation fas fa-divide g_back"></i></div>
-
-             <div class="border"><i data-id="19" class="operation fas fa-percentage g_back"></i></div>
-             <div class="border"><span data-id="5" class="operation number ballance">4</span></div>
-             <div class="border"><span data-id="6" class="operation number ballance">5</span></div>
-             <div class="border"><span data-id="7" class="operation number ballance">6</span></div>
-             <div class="border"><i data-id="13" class="operation fas fa-times g_back"></i></div>
-
-             <div data-id="17" class="operation superscriptBorder"><div class="border">
-               <div class="superscript g_back"></div>
-              </div></div>
-             <div class="border"><span data-id="8" class="operation number ballance">1</span></div>
-             <div class="border"><span data-id="9" class="operation number ballance">2</span></div>
-             <div class="border"><span data-id="10" class="operation number ballance">3</span></div>
-             <div class="border"><i data-id="14" class="operation fas fa-minus g_back"></i></div>
-              
-             <div class="border"><span data-id="18" class="operation plus-minus ballance g_back">+/-</span></div>
-             <div class="border"><span data-id="11" class="operation number ballance">0</span></div>
-             <div class="border"><span data-id="20" class="operation dot g_back">.</span></div>
-             <div class="border"><i data-id="21" class="operation fas fa-equals or_back"></i></div>
-             <div class="border"><i data-id="15" class="operation fas fa-plus g_back"></i></div>
+            <div class="calculator-upper-screen-secondary">
+              <div class="calculator-upper-screen-secondary-inner" id="secondaryDisplay">
+                <p class="calculator-upper-screen-second"></p>
+                <span class="calculator-upper-screen-sign-second fas" id="secondarySignDisplay"></span>
+                <span id="secondRootSign"></span>
+              </div>
             </div>
+
+            <i class="calculator-upper-screen-sign fas " id="operation-sign"></i>
+            <span class="fas" id="mainSignDisplay"></span>
+            <span id="firstRootSign"></span>
           </div>
         </div>
+        <div class="calculator-down">
+          <div class="calculator-down-controller">
+            <div class="border"><i class="fa fa-power-off r_back"></i></div>
+            <div class="border"><span class="switch ballance">off</span></div>
+            <div class="border"><span class="switch ballance">on</span></div>
+            <div class="border"><span data-id="0" class="operation clear ballance or_back">clr</span></div>
+            <div class="border"><i data-id="1" class="operation fas fa-backspace ballance or_back"></i></div>
+
+            <div class="border"><i data-id="17" class="operation fas fa-square-root g_back"></i></div>
+            <div class="border"><span data-id="2" class="operation number ballance">7</span></div>
+            <div class="border"><span data-id="3" class="operation number ballance">8</span></div>
+            <div class="border"><span data-id="4" class="operation number ballance">9</span></div>
+            <div class="border"><i data-id="12" class="operation fas fa-divide g_back"></i></div>
+
+            <div class="border"><i data-id="19" class="operation fas fa-percentage g_back"></i></div>
+            <div class="border"><span data-id="5" class="operation number ballance">4</span></div>
+            <div class="border"><span data-id="6" class="operation number ballance">5</span></div>
+            <div class="border"><span data-id="7" class="operation number ballance">6</span></div>
+            <div class="border"><i data-id="13" class="operation fas fa-times g_back"></i></div>
+
+            <div data-id="16" class="operation superscriptBorder">
+              <div class="border">
+                <div class="superscript g_back"></div>
+              </div>
+            </div>
+            <div class="border"><span data-id="8" class="operation number ballance">1</span></div>
+            <div class="border"><span data-id="9" class="operation number ballance">2</span></div>
+            <div class="border"><span data-id="10" class="operation number ballance">3</span></div>
+            <div class="border"><i data-id="14" class="operation fas fa-minus g_back"></i></div>
+
+            <div class="border"><span data-id="18" class="operation plus-minus ballance g_back">+/-</span></div>
+            <div class="border"><span data-id="11" class="operation number ballance">0</span></div>
+            <div class="border"><span data-id="20" class="operation dot g_back">.</span></div>
+            <div class="border"><i data-id="21" class="operation fas fa-equals or_back"></i></div>
+            <div class="border"><i data-id="15" class="operation fas fa-plus g_back"></i></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <script src="Javascript/calculator.js" defer></script>
 </body>
+
 </html>

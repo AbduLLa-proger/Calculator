@@ -12,7 +12,10 @@
 html,
 body {
   width: 100%;
-  height: 85%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 body {
@@ -35,14 +38,51 @@ h6 {
   margin: 0;
 }
 
+.tooltip {
+  position: absolute;
+  top: 12%;
+  left: 77%;
+  text-align: center;
+}
+
+.tooltip-content {
+  color: white;
+  background-color: black;
+  padding: 1rem;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  position: absolute;
+  z-index: 1;
+  text-align: center;
+  width: 21rem;
+  font-family: "Open Sans", sans-serif;
+}
+
+.tooltip-content::before {
+  content: "You can not write more than 20 number";
+}
+
+.tooltip-content::after {
+  content: "";
+  position: absolute;
+  top: 35%;
+  right: 100%;
+  border: 0.5rem solid transparent;
+  border-right-color: #000000;
+  font-size: 10rem;
+}
+
 .calculator {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: unset;
-  width: 100%;
-  height: 70%;
-  margin-top: 11.3%;
+  width: 60rem;
+  height: 40rem;
+  position: relative;
 }
 
 .calculator-inner {
@@ -72,6 +112,8 @@ h6 {
 }
 
 .calculator-upper-screen {
+  width: auto;
+  height: auto;
   width: 90%;
   height: 100%;
   border-radius: 5px;
@@ -83,38 +125,70 @@ h6 {
   position: relative;
 }
 
-.calculator-upper-screen-first {
+.calculator-upper-screen-main {
   position: absolute;
+  top: 45%;
+  left: 7%;
+}
+
+.calculator-upper-screen-main-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: unset;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.calculator-upper-screen-secondary {
+  width: 75%;
+  height: 45%;
+  position: absolute;
+  top: 0%;
+  left: 2%;
+}
+
+.calculator-upper-screen-secondary-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: unset;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.calculator-upper-screen-second {
+  position: absolute;
+  top: 30%;
+  left: 1.8rem;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-size: 1.5rem;
   color: #000000;
-  left: 2%;
-  top: 2%;
 }
 
-.calculator-upper-screen-second {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: unset;
+.calculator-upper-screen-first {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-size: 2rem;
   color: #000000;
-  padding-left: 1.7rem;
   width: 100%;
   height: 100%;
 }
 
 .calculator-upper-screen-sign {
   position: absolute;
-  font-family: "Roboto", sans-serif;
-  font-weight: 700;
-  font-size: 3rem;
-  color: #000000;
+  top: 0;
   right: 3%;
-  top: 0%;
+  font-size: 3rem;
+}
+
+.calculator-upper-screen-sign-second {
+  position: absolute;
+  left: 4%;
+  font-size: 1.6rem;
 }
 
 .calculator-down {
@@ -259,7 +333,7 @@ h6 {
 }
 
 .calculator-down-controller div .r_backOn {
-  color: lime;
+  color: #00ff00;
 }
 
 .calculator-down-controller .superscriptBorder {
@@ -307,8 +381,8 @@ h6 {
   background-image: url("images/superscript.png");
   background-size: cover;
   background-repeat: no-repeat;
-  position: absolute;
   background-color: transparent;
+  position: absolute;
   top: 16%;
   left: 25%;
   width: 2.7rem;
@@ -321,10 +395,10 @@ h6 {
 }
 
 .container {
+  max-width: 30rem;
+  max-height: 38rem;
   width: 100%;
   height: 100%;
-  min-height: 38rem;
-  max-width: 450px;
 }
 
 .plus-minus {
@@ -341,49 +415,88 @@ switch,
   padding-bottom: 3.4rem;
 }
 
-.rootSign {
+.firstRootLine {
+  width: 1rem;
+  height: 0.39rem;
   position: absolute;
-  top: 34%;
+  top: 45%;
+  left: 8.8%;
+  background: #000000;
+}
+
+.secondRootLine {
+  width: 0.5rem;
+  height: 0.4rem;
+  position: absolute;
+  top: 26%;
+  left: 2.3rem;
+  background: #000000;
+}
+
+.firstRootSign {
+  position: absolute;
+  top: 45%;
   left: 1%;
   font-size: 2rem;
   color: #000000;
 }
 
-.rootSign::before {
+.firstRootSign::before {
   content: "\f697";
 }
 
-.rootSign::after {
-  content: "";
+.secondRootSign {
   position: absolute;
-  width: 0.5rem;
-  height: 0.39rem;
-  top: 0%;
-  left: 99%;
-  background: #000000;
+  top: 26%;
+  left: 0.1rem;
+  font-size: 2rem;
+  color: #000000;
 }
 
-.raiseToPower {
+.secondRootSign::before {
+  content: "\f697";
+}
+
+.firstTwoInPower::before {
+  content: "2";
   position: absolute;
-  top: 20%;
-  left: 10%;
+  top: -0.9rem;
+  left: 100%;
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-size: 1.5rem;
 }
 
-.raiseToPower::before {
+.secondTwoInPower::before {
   content: "2";
+  position: absolute;
+  top: -0.9rem;
+  left: 100%;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
 }
 
-.absSign {
+.firstAbsSign {
   position: absolute;
-  top: 25%;
+  top: 33%;
   left: 2%;
+  font-size: 3.5rem;
+  font-weight: 500;
+}
+
+.firstAbsSign::after {
+  content: "-";
+}
+
+.secondAbsSign {
+  position: absolute;
+  top: 0%;
+  left: 3%;
   font-size: 3rem;
   font-weight: 500;
 }
 
-.absSign::after {
+.secondAbsSign::after {
   content: "-";
 }
